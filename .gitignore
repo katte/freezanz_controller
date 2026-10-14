@@ -1,0 +1,5 @@
+.claude/
+*.har
+config.php
+deploy_config.ini
+.deploy_state.json

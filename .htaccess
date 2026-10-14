@@ -1,0 +1,21 @@
+# Protezione file sensibili anche fuori dalla cartella data/.
+<FilesMatch "\.(json|log|har|md)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# config.php è PHP (non servito come sorgente), ma blocchiamo comunque accessi diretti.
+<Files "config.php">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</Files>
